@@ -10,11 +10,11 @@ public class NoNullArrayList<T> extends ArrayList<T> {
 		super(startingCapacity);
 	}
 
-	public void add(T element) {
+	public boolean add(T element) {
 		if (element == null) {
 			throw new IllegalArgumentException("element " + element + "cannot be null");
 		} else {
-			super.add(element);
+			return super.add(element);
 		}
 	}
 
@@ -23,6 +23,14 @@ public class NoNullArrayList<T> extends ArrayList<T> {
 			throw new IllegalArgumentException("element " + element + "cannot be null");
 		} else {
 			super.add(index, element);
+		}
+	}
+
+	public T set(int index, T element) {
+		if (element == null) {
+			throw new IllegalArgumentException("element " + element + "cannot be null");
+		} else {
+			return super.set(index, element);
 		}
 	}
 
