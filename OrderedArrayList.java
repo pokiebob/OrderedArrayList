@@ -8,6 +8,19 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 		super(startingCapacity);
 	}
 
+	public boolean add(T element) {
+		for (int i = 0; i < size()) {
+			if (get(i) > element) {
+				return super.add(i, element);
+			}
+		}
+		return super.add(element);
+	}
+
+	public void add(int index, T element) {
+		add(element);
+	}
+
 
 	public static void main(String[] args) {
 
