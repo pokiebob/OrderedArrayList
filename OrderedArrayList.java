@@ -9,9 +9,10 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 	}
 
 	public boolean add(T element) {
-		for (int i = 0; i < size()) {
-			if (get(i) > element) {
-				return super.add(i, element);
+		for (int i = 0; i < size(); i++) {
+			if (super.get(i).compareTo(element) > 0) {
+				super.add(i, element);
+				return true;
 			}
 		}
 		return super.add(element);
@@ -22,8 +23,10 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 	}
 
 	public T set(int index, T element) {
+		T value = get(index);
 		remove(index);
-		return add(element);
+		add(element);
+		return value;
 	}
 
 	public static void main(String[] args) {
